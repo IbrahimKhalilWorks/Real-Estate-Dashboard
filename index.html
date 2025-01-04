@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Property Leasing & Management Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+<!-- Navbar -->
+<header id="dashboard-navbar">
+  <nav class="navbar-container">
+    <a href="#" id="navbar-logo">RealEstate</a>
+    <div class="hamburger-icon" id="hamburger-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="navbar-links" id="navbar-links">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Properties</a></li>
+      <li><a href="#">Leases</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+    <div class="main_container">
+      <div class="min-h-screen bg-background p-6">
+        <h1 class="text-2xl font-bold mb-6 text-header">
+          Real Estate Property Leasing & Management Dashboard
+        </h1>
+
+        <div class="dashboard-grid">
+          <!-- Left Column -->
+          <div class="left-column">
+            <!-- Chart Section -->
+            <div class="bg-white p-6 rounded-lg shadow hi1">
+              <div class="relative">
+                <h2 class="text-lg font-semibold mb-4">Overview</h2>
+                <div
+                  class="absolute top-0 left-32 bg-primary text-white px-4 py-1 rounded none"
+                >
+                  Property Revenue Overview
+                </div>
+              </div>
+              <div class="h-300 mt-8">
+                <canvas id="revenueChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Money Stats -->
+            <div class="stats-grid">
+              <div class="bg-money-in p-6 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <div class="text-4xl font-bold text-primary">$150,000</div>
+                  <div class="flex items-center text-primary">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-5 h-5"
+                    >
+                      <polyline
+                        points="23 6 13.5 15.5 8.5 10.5 1 18"
+                      ></polyline>
+                      <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                    <span class="ml-1">5.8%</span>
+                  </div>
+                </div>
+                <div class="mt-2">Money in</div>
+              </div>
+              <div class="bg-money-out p-6 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <div class="text-4xl font-bold text-secondary">$46,690</div>
+                  <div class="flex items-center text-secondary">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-5 h-5"
+                    >
+                      <polyline
+                        points="23 6 13.5 15.5 8.5 10.5 1 18"
+                      ></polyline>
+                      <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                    <span class="ml-1">5.8%</span>
+                  </div>
+                </div>
+                <div class="mt-2">Money out</div>
+              </div>
+            </div>
+
+            <!-- Recent Tasks -->
+            <div class="tasks-grid">
+              <!-- Recent Tasks -->
+              <div class="expiring-leases">
+                <div class="p-6 rounded-lg">
+                  <div class="relative mb-6">
+                    <div
+                      class="absolute -top-9 left-0 bg-primary text-white px-4 py-1 rounded"
+                    >
+                      Recent Task
+                    </div>
+                  </div>
+                  <h3 class="font-semibold mb-4 text-lg">Incoming Requests</h3>
+                  <div class="space-y-4">
+                    <!-- Task 1 -->
+                    <div class="flex items-center gap-4">
+                      <div class="column_2el">
+                        <span class="bg-blue-100 text-xs px-2 py-1 rounded"
+                          >New</span
+                        >
+                        <img
+                          src="Team-16.jpg"
+                          alt="User A"
+                          class="w-8 h-8 rounded-full border top_5px"
+                        />
+                      </div>
+                      <div class="task-bar-column">
+                        <p class="text-sm">
+                          Issue in the bedroom's down ceiling
+                        </p>
+                        <p class="text-xs text-gray-500 top_5px">
+                          Resident Request
+                        </p>
+                      </div>
+                      <span class="text-sm font-semibold">2d ago</span>
+                    </div>
+                    <!-- Task 2 -->
+                    <div class="flex items-center gap-4">
+                      <div class="column_2el">
+                        <span class="bg-blue-100 text-xs px-2 py-1 rounded"
+                          >New</span
+                        >
+                        <img
+                          src="Team-16.jpg"
+                          alt="User A"
+                          class="w-8 h-8 rounded-full border top_5px"
+                        />
+                      </div>
+                      <div class="task-bar-column">
+                        <p class="text-sm">Searching for a new Tenant</p>
+                        <p class="text-xs text-gray-500 top_5px">
+                          Rental Owner Request
+                        </p>
+                      </div>
+                      <span class="text-sm font-semibold">5d ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <section class="expiring-leases">
+                <h2>Expiring Leases</h2>
+                <canvas id="expiringLeasesChart"></canvas>
+              </section>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <!-- Properties Overview -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center gap-4 mb-6">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-12 h-12 text-primary"
+                >
+                  <path d="M3 21h18"></path>
+                  <path
+                    d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"
+                  ></path>
+                  <path d="M5 21V10.85"></path>
+                  <path d="M19 21V10.85"></path>
+                  <path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"></path>
+                </svg>
+                <div>
+                  <div class="text-4xl font-bold">98</div>
+                  <div class="text-lg">Properties</div>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-3 gap-2 text-white text-center hello_t"
+              >
+                <div class="bg-primary p-2 rounded hhi_1">
+                  <div class="text-2xl font-bold">8</div>
+                  <div class="text-sm">Vacant</div>
+                </div>
+                <div class="bg-primary p-2 rounded hhi_1">
+                  <div class="text-2xl font-bold">8</div>
+                  <div class="text-sm">Acquires</div>
+                </div>
+                <div class="bg-primary p-2 rounded hhi_1">
+                  <div class="text-2xl font-bold">8</div>
+                  <div class="text-sm">Not Listed</div>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <h3 class="font-semibold mb-2">Last 30 Days</h3>
+                <div class="space-y-2">
+                  <div class="text-lg">Revenue Snapshot:</div>
+                  <div class="text-primary">
+                    Total Income: $150,000
+                    <span class="text-green-500">(+ 6% Growth)</span>
+                  </div>
+                  <div class="text-primary">
+                    Total Expenses: $46,690
+                    <span class="text-red-500">(+ 3% Decrease)</span>
+                  </div>
+                  <div class="text-primary">Net Profit: $80,000</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Outstanding Balances -->
+            <div class="bg-white p-6 rounded-lg shadow mt-6">
+              <h3 class="font-semibold mb-4">Outstanding Balances</h3>
+              <p class="text-sm text-gray-600 mb-4">All Properties</p>
+              <div class="flex gap-2 mb-4">
+                <div class="bg-primary w-8" style="height: 60px"></div>
+                <div class="bg-primary w-8" style="height: 80px"></div>
+                <div class="bg-primary w-8" style="height: 70px"></div>
+                <div class="bg-primary w-8" style="height: 50px"></div>
+                <div class="bg-primary w-8" style="height: 75px"></div>
+                <div class="bg-primary w-8" style="height: 65px"></div>
+              </div>
+              <div class="flex items-center gap-4 p-4 border rounded-lg hii1">
+                <img
+                  src="office.png"
+                  alt="Property"
+                  width="100"
+                  height="100"
+                  class="rounded"
+                />
+                <div class="flex-1">
+                  <h4 class="font-semibold">Property A</h4>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"
+                    >
+                      AR
+                    </div>
+                    <span class="cr">User C</span>
+                  </div>
+                </div>
+                <div class="text-primary text-2xl font-bold">$12,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id="dashboard-footer">
+      <div class="footer-container">
+        <div class="footer-section" id="footer-about">
+          <h3>RealEstate</h3>
+          <p>Your trusted partner in property leasing and management.</p>
+        </div>
+         
+        <div class="footer-section" id="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: info@realestate.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2025 RealEstate. All rights reserved. Developed by Ibrahim.</p>
+      </div>
+    </footer>
+    
+  </body>
+  <script src="app.js"></script>
+</html>
