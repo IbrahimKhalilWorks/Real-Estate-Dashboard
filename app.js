@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById("revenueChart").getContext("2d");
-
+  
+  const ctx = document.getElementById("revenueChart").getContext("2d"); 
   const initialData = [
     { month: "April", income: 0, expense: 0 },
     { month: "May", income: 0, expense: 0 },
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       },
       animation: {
-        duration: 1000,
+        duration: 2000,
         easing: "easeInOutQuad",
       },
       plugins: {
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
     chart.update();
   }, 100);
 });
-
 const ctx = document.getElementById("expiringLeasesChart").getContext("2d");
 const expiringLeasesChart = new Chart(ctx, {
   type: "doughnut",
@@ -80,14 +79,15 @@ const expiringLeasesChart = new Chart(ctx, {
     datasets: [
       {
         label: "Expiring Leases",
-        data: [30, 70], // Example data: 30% expiring soon, 70% long-term
+        data: [30, 70],
         backgroundColor: ["#6e07f3", "#2c2c9f"],
         hoverBackgroundColor: ["#5c06d1", "#1f1f7d"],
       },
     ],
   },
   options: {
-    responsive: true,
+    responsive: false, // Disable responsiveness
+    cutoutPercentage: 60, // Adjust the donut hole size
     plugins: {
       legend: {
         position: "top",
@@ -101,8 +101,45 @@ const expiringLeasesChart = new Chart(ctx, {
   },
 });
 
+document
+  .getElementById("hamburger-icon")
+  .addEventListener("click", function () {
+    const navbarLinks = document.getElementById("navbar-links");
+    navbarLinks.classList.toggle("active");
+  });
 
-document.getElementById("hamburger-icon").addEventListener("click", function() {
-  const navbarLinks = document.getElementById("navbar-links");
-  navbarLinks.classList.toggle("active");
-});
+
+
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("toggle-btn");
+    const mainContent = document.querySelector(".main-content");
+
+    toggleBtn.addEventListener("click", function () {
+      sidebar.classList.toggle("collapsed");
+      sidebar.classList.toggle("active");
+      mainContent.classList.toggle("expanded");
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener("click", function (event) {
+      const isClickInsideSidebar = sidebar.contains(event.target);
+      const isClickInsideToggleBtn = toggleBtn.contains(event.target);
+
+      if (
+        !isClickInsideSidebar &&
+        !isClickInsideToggleBtn &&
+        window.innerWidth <= 768
+      ) {
+        sidebar.classList.remove("active");
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) {
+        sidebar.classList.remove("active");
+      }
+    });
+  });
